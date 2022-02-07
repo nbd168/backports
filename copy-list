@@ -91,6 +91,9 @@ net/mac80211/
 include/linux/mpls.h
 include/uapi/linux/mpls.h
 
+drivers/bus/mhi/
+include/linux/mhi.h
+
 drivers/net/wireless/ath/
 drivers/ssb/
 include/linux/ssb/
