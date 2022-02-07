@@ -36,6 +36,8 @@ include/linux/wireless.h
 include/uapi/linux/wireless.h
 include/linux/ieee80211.h
 include/linux/pci_ids.h
+include/uapi/linux/qrtr.h
+include/trace/events/qrtr.h
 include/uapi/linux/pci_regs.h
 include/linux/mmc/sdio_ids.h
 include/linux/ath9k_platform.h
@@ -83,6 +85,7 @@ crypto/asymmetric_keys/x509_public_key.c -> compat/verification/x509_public_key.
 
 net/Makefile
 net/Kconfig
+net/qrtr/
 net/wireless/
 net/mac80211/
 # MPLS labels, checked on skb->protocol on the
