@@ -43,3 +43,6 @@ MHI_BUS 4.19
 
 # sock_gettstamp()
 QRTR 5.2
+
+# QRTR
+ATH11K 5.2
