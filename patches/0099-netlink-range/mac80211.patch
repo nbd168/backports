@@ -1,6 +1,6 @@
 --- a/net/wireless/nl80211.c
 +++ b/net/wireless/nl80211.c
-@@ -412,10 +412,12 @@ static const struct nla_policy
+@@ -412,10 +412,15 @@ static const struct nla_policy
  nl80211_fils_discovery_policy[NL80211_FILS_DISCOVERY_ATTR_MAX + 1] = {
  	[NL80211_FILS_DISCOVERY_ATTR_INT_MIN] = NLA_POLICY_MAX(NLA_U32, 10000),
  	[NL80211_FILS_DISCOVERY_ATTR_INT_MAX] = NLA_POLICY_MAX(NLA_U32, 10000),
@@ -9,11 +9,14 @@
  			NLA_POLICY_RANGE(NLA_BINARY,
  					 NL80211_FILS_DISCOVERY_TMPL_MIN_LEN,
  					 IEEE80211_MAX_DATA_LEN),
++#else
++	[NL80211_FILS_DISCOVERY_ATTR_TMPL] = { .type = NLA_BINARY,
++					       .len = IEEE80211_MAX_DATA_LEN },
 +#endif
  };
  
  static const struct nla_policy
-@@ -655,16 +657,26 @@ static const struct nla_policy nl80211_p
+@@ -655,16 +660,26 @@ static const struct nla_policy nl80211_p
  	 * The value of the Length field of the Supported Operating
  	 * Classes element is between 2 and 253.
  	 */
@@ -40,7 +43,7 @@
  	[NL80211_ATTR_MAC_HINT] = NLA_POLICY_EXACT_LEN_WARN(ETH_ALEN),
  	[NL80211_ATTR_WIPHY_FREQ_HINT] = { .type = NLA_U32 },
  	[NL80211_ATTR_TDLS_PEER_CAPABILITY] = { .type = NLA_U32 },
-@@ -719,10 +731,15 @@ static const struct nla_policy nl80211_p
+@@ -719,10 +734,15 @@ static const struct nla_policy nl80211_p
  	[NL80211_ATTR_TXQ_LIMIT] = { .type = NLA_U32 },
  	[NL80211_ATTR_TXQ_MEMORY_LIMIT] = { .type = NLA_U32 },
  	[NL80211_ATTR_TXQ_QUANTUM] = { .type = NLA_U32 },
