@@ -37,7 +37,7 @@ the older kernel instead. The list attributes where also backported to
  	struct ieee80211_sub_if_data *sdata;
 --- a/net/mac80211/rx.c
 +++ b/net/mac80211/rx.c
-@@ -2610,7 +2610,11 @@ static void ieee80211_deliver_skb_to_loc
+@@ -2611,7 +2611,11 @@ static void ieee80211_deliver_skb_to_loc
  
  		/* deliver to local stack */
  		if (rx->list)
@@ -49,19 +49,7 @@ the older kernel instead. The list attributes where also backported to
  		else
  			netif_receive_skb(skb);
  	}
-@@ -4520,7 +4524,11 @@ static void ieee80211_rx_8023(struct iee
- 	skb->protocol = eth_type_trans(skb, fast_rx->dev);
- 	memset(skb->cb, 0, sizeof(skb->cb));
- 	if (rx->list)
-+#if LINUX_VERSION_IS_GEQ(4,19,0)
- 		list_add_tail(&skb->list, rx->list);
-+#else
-+		__skb_queue_tail(rx->list, skb);
-+#endif
- 	else
- 		netif_receive_skb(skb);
- 
-@@ -4702,7 +4710,11 @@ static bool ieee80211_prepare_and_rx_han
+@@ -4698,7 +4702,11 @@ static bool ieee80211_prepare_and_rx_han
  static void __ieee80211_rx_handle_8023(struct ieee80211_hw *hw,
  				       struct ieee80211_sta *pubsta,
  				       struct sk_buff *skb,
@@ -73,7 +61,7 @@ the older kernel instead. The list attributes where also backported to
  {
  	struct ieee80211_local *local = hw_to_local(hw);
  	struct ieee80211_fast_rx *fast_rx;
-@@ -4743,7 +4755,11 @@ drop:
+@@ -4739,7 +4747,11 @@ drop:
  static void __ieee80211_rx_handle_packet(struct ieee80211_hw *hw,
  					 struct ieee80211_sta *pubsta,
  					 struct sk_buff *skb,
@@ -85,7 +73,7 @@ the older kernel instead. The list attributes where also backported to
  {
  	struct ieee80211_local *local = hw_to_local(hw);
  	struct ieee80211_sub_if_data *sdata;
-@@ -4868,7 +4884,11 @@ static void __ieee80211_rx_handle_packet
+@@ -4864,7 +4876,11 @@ static void __ieee80211_rx_handle_packet
   * 802.11 MPDU is received from the hardware.
   */
  void ieee80211_rx_list(struct ieee80211_hw *hw, struct ieee80211_sta *pubsta,
@@ -97,7 +85,7 @@ the older kernel instead. The list attributes where also backported to
  {
  	struct ieee80211_local *local = hw_to_local(hw);
  	struct ieee80211_rate *rate = NULL;
-@@ -4992,7 +5012,13 @@ void ieee80211_rx_napi(struct ieee80211_
+@@ -4988,7 +5004,13 @@ void ieee80211_rx_napi(struct ieee80211_
  		       struct sk_buff *skb, struct napi_struct *napi)
  {
  	struct sk_buff *tmp;
@@ -111,7 +99,7 @@ the older kernel instead. The list attributes where also backported to
  
  
  	/*
-@@ -5009,8 +5035,13 @@ void ieee80211_rx_napi(struct ieee80211_
+@@ -5005,8 +5027,13 @@ void ieee80211_rx_napi(struct ieee80211_
  		return;
  	}
  

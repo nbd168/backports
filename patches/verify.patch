@@ -23,7 +23,7 @@
  #include "x509_parser.h"
  
  /*
-@@ -155,6 +152,7 @@ not_self_signed:
+@@ -149,6 +146,7 @@ not_self_signed:
  	return 0;
  }
  
@@ -31,7 +31,7 @@
  /*
   * Attempt to parse a data blob for a key as an X509 certificate.
   */
-@@ -273,3 +271,4 @@ module_exit(x509_key_exit);
+@@ -267,3 +265,4 @@ module_exit(x509_key_exit);
  MODULE_DESCRIPTION("X.509 certificate parser");
  MODULE_AUTHOR("Red Hat, Inc.");
  MODULE_LICENSE("GPL");
