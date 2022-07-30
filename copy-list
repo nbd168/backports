@@ -26,7 +26,7 @@ include/linux/overflow.h
 include/linux/units.h
 
 # crypto_memneq
-crypto/memneq.c -> compat/memneq.c
+lib/memneq.c -> compat/memneq.c
 
 # 802.11
 drivers/net/wireless/Kconfig
