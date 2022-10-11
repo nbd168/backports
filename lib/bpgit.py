@@ -50,7 +50,7 @@ def status(tree=None):
     of the form
     ('XY', 'filename')
     or
-    ('XY', 'filename_to', 'filename_from')   [if X is 'R' for rename]
+    ('XY', 'filename_to', 'filename_from')   [if X is 'R' for rename or 'C' for copy]
     '''
     cmd = ['git', 'status', '--porcelain', '-z']
 
@@ -70,7 +70,7 @@ def status(tree=None):
             cur.append(i[:2])
             assert i[2] == ' '
             cur.append(i[3:])
-            if i[0] == 'R':
+            if i[0] in ['R', 'C']:
                 continue
         else:
             cur.append(i)
