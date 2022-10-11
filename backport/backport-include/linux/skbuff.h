@@ -15,8 +15,16 @@ static inline void skb_mark_not_on_list(struct sk_buff *skb)
 {
 	skb->next = NULL;
 }
+#endif /* 4.19.10 <= x < 4.20 || 4.14.217 <= x < 4.15 */
+
+#if !LINUX_VERSION_IN_RANGE(4,19,10, 4,20,0)
+static inline void skb_list_del_init(struct sk_buff *skb)
+{
+	__list_del_entry((struct list_head *)&skb->next);
+	skb_mark_not_on_list(skb);
+}
 #endif /* 4.19.10 <= x < 4.20 */
-#endif
+#endif /* < 4.20 */
 
 #if LINUX_VERSION_IS_LESS(5,4,0)
 /**
