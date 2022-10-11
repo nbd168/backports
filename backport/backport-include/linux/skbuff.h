@@ -123,7 +123,7 @@ static inline __u32 skb_queue_len_lockless(const struct sk_buff_head *list_)
 }
 #endif /* < 5.6.0 */
 
-#if LINUX_VERSION_IS_LESS(5,11,0)
+#if LINUX_VERSION_IS_LESS(5,10,54)
 #define skb_get_kcov_handle LINUX_BACKPORT(skb_get_kcov_handle)
 static inline u64 skb_get_kcov_handle(struct sk_buff *skb)
 {
