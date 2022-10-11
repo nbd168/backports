@@ -3,6 +3,9 @@
 
 #include_next <linux/sched.h>
 #include <linux/version.h>
+#if LINUX_VERSION_IS_LESS(4,10,0)
+#include <linux/kcov.h>
+#endif /* LINUX_VERSION_IS_LESS(4,10,0) */
 
 /* kcov was added in 4.6 and is included since then */
 #if LINUX_VERSION_IS_LESS(4,6,0)
