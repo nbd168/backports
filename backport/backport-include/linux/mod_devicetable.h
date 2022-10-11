@@ -29,4 +29,8 @@ struct mhi_device_id {
 };
 #endif
 
+#if LINUX_VERSION_IS_LESS(4,17,0)
+#define DMI_OEM_STRING (DMI_STRING_MAX + 1)
+#endif /* < 4.17.0 */
+
 #endif /* __BACKPORT_MOD_DEVICETABLE_H */
