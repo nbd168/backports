@@ -346,10 +346,33 @@ enum nla_policy_validation {
 }
 #endif /* < 4.20 */
 
-#ifndef NLA_POLICY_MIN_LEN
-#define NLA_POLICY_MIN_LEN(_len) {		\
-	.type = NLA_BINARY			\
+#if LINUX_VERSION_IS_LESS(5,10,0)
+// pre-declare all the minimum lengths in use
+#define MIN_LEN_VALIDATION(n)						\
+static inline								\
+int nla_validate_min_len_##n(const struct nlattr *attr,			\
+			     struct netlink_ext_ack *extack)		\
+{									\
+	if (nla_len(attr) < n)						\
+		return -EINVAL;						\
+	return 0;							\
 }
-#endif
+
+MIN_LEN_VALIDATION(2)
+MIN_LEN_VALIDATION(16)
+MIN_LEN_VALIDATION(42)
+
+// double-expansion to expand _min to the actual value
+#define NLA_POLICY_BINARY_RANGE(_min, _max) _NLA_POLICY_BINARY_RANGE(_min, _max)
+#define _NLA_POLICY_BINARY_RANGE(_min, _max)		\
+{							\
+	.type = NLA_BINARY,				\
+	.len = _max,					\
+	.validation_type = NLA_VALIDATE_FUNCTION,	\
+	.validate = nla_validate_min_len_ ## _min,	\
+}
+#else
+#define NLA_POLICY_BINARY_RANGE(_min, _max) NLA_POLICY_RANGE(NLA_BINARY, _min, _max)
+#endif /* < 5.10 */
 
 #endif /* __BACKPORT_NET_NETLINK_H */
