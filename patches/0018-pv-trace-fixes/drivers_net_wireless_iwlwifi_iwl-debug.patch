@@ -1,6 +1,8 @@
+diff --git a/drivers/net/wireless/intel/iwlwifi/iwl-debug.c b/drivers/net/wireless/intel/iwlwifi/iwl-debug.c
+index ae4c2a3d63d5..339062da2917 100644
 --- a/drivers/net/wireless/intel/iwlwifi/iwl-debug.c
 +++ b/drivers/net/wireless/intel/iwlwifi/iwl-debug.c
-@@ -69,13 +69,16 @@ void __iwl_ ##fn(struct device *dev, const char *fmt, ...)	\
+@@ -15,13 +15,16 @@ void __iwl_ ##fn(struct device *dev, const char *fmt, ...)	\
  	struct va_format vaf = {				\
  		.fmt = fmt,					\
  	};							\
@@ -21,27 +23,7 @@
  }
  
  __iwl_fn(warn)
-@@ -94,13 +97,18 @@ void __iwl_err(struct device *dev, bool rfkill_prefix, bool trace_only,
- 	va_list args;
- 
- 	va_start(args, fmt);
--	vaf.va = &args;
- 	if (!trace_only) {
-+		va_list args2;
-+
-+		va_copy(args2, args);
-+		vaf.va = &args2;
- 		if (rfkill_prefix)
- 			dev_err(dev, "(RFKILL) %pV", &vaf);
- 		else
- 			dev_err(dev, "%pV", &vaf);
-+		va_end(args2);
- 	}
-+	vaf.va = &args;
- 	trace_iwlwifi_err(&vaf);
- 	va_end(args);
- }
-@@ -117,12 +125,18 @@ void __iwl_dbg(struct device *dev,
+@@ -73,12 +76,18 @@ void __iwl_dbg(struct device *dev,
  	va_list args;
  
  	va_start(args, fmt);
