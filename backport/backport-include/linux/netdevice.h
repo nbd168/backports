@@ -183,6 +183,17 @@ struct net_device_path_ctx {
 };
 #endif /* NET_DEVICE_PATH_STACK_MAX */
 
+#if LINUX_VERSION_IS_LESS(5,17,0)
+static inline void backport_txq_trans_cond_update(struct netdev_queue *txq)
+{
+	unsigned long now = jiffies;
+
+	if (READ_ONCE(txq->trans_start) != now)
+		WRITE_ONCE(txq->trans_start, now);
+}
+#define txq_trans_cond_update LINUX_BACKPORT(txq_trans_cond_update)
+#endif /* < 5.17 */
+
 #if LINUX_VERSION_IS_LESS(5,18,0)
 static inline int LINUX_BACKPORT(netif_rx)(struct sk_buff *skb)
 {
