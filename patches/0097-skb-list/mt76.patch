@@ -1,6 +1,6 @@
 --- a/drivers/net/wireless/mediatek/mt76/mac80211.c
 +++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -1024,7 +1024,13 @@ void mt76_rx_complete(struct mt76_dev *d
+@@ -1025,7 +1025,13 @@ void mt76_rx_complete(struct mt76_dev *d
  	struct ieee80211_sta *sta;
  	struct ieee80211_hw *hw;
  	struct sk_buff *skb, *tmp;
@@ -14,7 +14,7 @@
  
  	spin_lock(&dev->rx_lock);
  	while ((skb = __skb_dequeue(frames)) != NULL) {
-@@ -1056,8 +1062,13 @@ void mt76_rx_complete(struct mt76_dev *d
+@@ -1057,8 +1063,13 @@ void mt76_rx_complete(struct mt76_dev *d
  		return;
  	}
  
