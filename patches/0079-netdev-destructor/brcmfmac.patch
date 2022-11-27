@@ -1,6 +1,6 @@
 --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/core.c
 +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/core.c
-@@ -638,6 +638,23 @@ static const struct net_device_ops brcmf
+@@ -639,6 +639,23 @@ static const struct net_device_ops brcmf
  	.ndo_set_rx_mode = brcmf_netdev_set_multicast_list
  };
  
@@ -24,7 +24,7 @@
  int brcmf_net_attach(struct brcmf_if *ifp, bool locked)
  {
  	struct brcmf_pub *drvr = ifp->drvr;
-@@ -888,7 +905,11 @@ struct brcmf_if *brcmf_add_if(struct brc
+@@ -889,7 +906,11 @@ struct brcmf_if *brcmf_add_if(struct brc
  		if (!ndev)
  			return ERR_PTR(-ENOMEM);
  
