@@ -30,7 +30,7 @@
  }
 --- a/drivers/net/wireless/mediatek/mt76/mt76.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -1095,7 +1095,11 @@ struct sk_buff *mt76_tx_status_skb_get(s
+@@ -1096,7 +1096,11 @@ struct sk_buff *mt76_tx_status_skb_get(s
  void mt76_tx_status_skb_done(struct mt76_dev *dev, struct sk_buff *skb,
  			     struct sk_buff_head *list);
  void __mt76_tx_complete_skb(struct mt76_dev *dev, u16 wcid, struct sk_buff *skb,
