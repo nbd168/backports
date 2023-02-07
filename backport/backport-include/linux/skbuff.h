@@ -76,4 +76,8 @@ static inline u64 skb_get_kcov_handle(struct sk_buff *skb)
 }
 #endif
 
+#if LINUX_VERSION_IS_LESS(5,11,0)
+#define napi_build_skb build_skb
+#endif
+
 #endif /* __BACKPORT_SKBUFF_H */
