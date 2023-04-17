@@ -41,7 +41,6 @@ include/trace/events/qrtr.h
 include/uapi/linux/pci_regs.h
 include/linux/mmc/sdio_ids.h
 include/linux/ath9k_platform.h
-include/linux/wl12xx.h
 include/linux/rndis.h
 include/linux/bcm47xx_wdt.h
 include/linux/usb/usbnet.h
@@ -124,10 +123,9 @@ drivers/net/wireless/realtek/
 drivers/net/wireless/ti/
 drivers/net/wireless/mediatek/
 drivers/net/wireless/admtek/
-drivers/net/wireless/mac80211_hwsim.c
-drivers/net/wireless/mac80211_hwsim.h
+drivers/net/wireless/virtual/
 drivers/net/wireless/rsi/
-drivers/net/wireless/rndis_wlan.c
+drivers/net/wireless/legacy/
 # rndis also requires some of the USB networking
 drivers/net/usb/Makefile
 drivers/net/usb/Kconfig
@@ -137,7 +135,6 @@ drivers/net/usb/usbnet.c
 
 drivers/staging/Makefile
 drivers/staging/Kconfig
-drivers/staging/r8188eu/
 drivers/staging/rtl8723bs/
 
 drivers/usb/class/Makefile
