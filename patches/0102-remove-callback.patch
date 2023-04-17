@@ -5,7 +5,7 @@
  static int bcma_device_probe(struct device *dev);
  static void bcma_device_remove(struct device *dev);
 +static int bcma_device_remove_bp(struct device *dev);
- static int bcma_device_uevent(struct device *dev, struct kobj_uevent_env *env);
+ static int bcma_device_uevent(const struct device *dev, struct kobj_uevent_env *env);
  
  static ssize_t manuf_show(struct device *dev, struct device_attribute *attr, char *buf)
 @@ -71,7 +72,11 @@ static struct bus_type bcma_bus_type = {
@@ -20,7 +20,7 @@
  	.uevent		= bcma_device_uevent,
  	.dev_groups	= bcma_device_groups,
  };
-@@ -625,6 +630,12 @@ static void bcma_device_remove(struct de
+@@ -627,6 +632,12 @@ static void bcma_device_remove(struct device *dev)
  	put_device(dev);
  }
  
@@ -30,12 +30,12 @@
 +	return 0;
 +}
 +
- static int bcma_device_uevent(struct device *dev, struct kobj_uevent_env *env)
+ static int bcma_device_uevent(const struct device *dev, struct kobj_uevent_env *env)
  {
- 	struct bcma_device *core = container_of(dev, struct bcma_device, dev);
+ 	const struct bcma_device *core = container_of_const(dev, struct bcma_device, dev);
 --- a/drivers/ssb/main.c
 +++ b/drivers/ssb/main.c
-@@ -293,6 +293,13 @@ static void ssb_device_remove(struct dev
+@@ -293,6 +293,13 @@ static void ssb_device_remove(struct device *dev)
  	ssb_device_put(ssb_dev);
  }
  
