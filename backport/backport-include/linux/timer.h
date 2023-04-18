@@ -67,4 +67,9 @@ static inline void timer_setup(struct timer_list *timer,
 		__TIMER_INITIALIZER(_function, 0, 0, 0)
 #endif
 
+#if LINUX_VERSION_IS_LESS(6,2,0)
+#define timer_shutdown_sync del_timer_sync
+#define timer_shutdown del_timer
+#endif
+
 #endif /* _BACKPORT_TIMER_H */
