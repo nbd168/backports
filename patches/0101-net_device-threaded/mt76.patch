@@ -29,7 +29,7 @@
  		debugfs_create_blob("otp", 0400, dir, &dev->otp);
 --- a/drivers/net/wireless/mediatek/mt76/dma.c
 +++ b/drivers/net/wireless/mediatek/mt76/dma.c
-@@ -645,7 +645,9 @@ mt76_dma_init(struct mt76_dev *dev,
+@@ -650,7 +650,9 @@ mt76_dma_init(struct mt76_dev *dev,
  	init_dummy_netdev(&dev->tx_napi_dev);
  	snprintf(dev->napi_dev.name, sizeof(dev->napi_dev.name), "%s",
  		 wiphy_name(dev->hw->wiphy));

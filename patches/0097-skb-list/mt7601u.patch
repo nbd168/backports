@@ -12,7 +12,7 @@
  {
  	struct sk_buff *skb;
  	struct mt7601u_rxwi *rxwi;
-@@ -135,8 +139,14 @@ mt7601u_rx_process_entry(struct mt7601u_
+@@ -136,8 +140,14 @@ mt7601u_rx_process_entry(struct mt7601u_
  	u32 seg_len, data_len = e->urb->actual_length;
  	u8 *data = page_address(e->p);
  	struct page *new_p = NULL;

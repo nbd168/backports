@@ -1,6 +1,6 @@
 --- a/drivers/net/wireless/mediatek/mt76/mac80211.c
 +++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -1025,7 +1025,13 @@ void mt76_rx_complete(struct mt76_dev *d
+@@ -1026,7 +1026,13 @@ void mt76_rx_complete(struct mt76_dev *d
  	struct ieee80211_sta *sta;
  	struct ieee80211_hw *hw;
  	struct sk_buff *skb, *tmp;
@@ -14,7 +14,7 @@
  
  	spin_lock(&dev->rx_lock);
  	while ((skb = __skb_dequeue(frames)) != NULL) {
-@@ -1057,8 +1063,13 @@ void mt76_rx_complete(struct mt76_dev *d
+@@ -1058,8 +1064,13 @@ void mt76_rx_complete(struct mt76_dev *d
  		return;
  	}
  
@@ -30,7 +30,7 @@
  }
 --- a/drivers/net/wireless/mediatek/mt76/mt76.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -1096,7 +1096,11 @@ struct sk_buff *mt76_tx_status_skb_get(s
+@@ -1098,7 +1098,11 @@ struct sk_buff *mt76_tx_status_skb_get(s
  void mt76_tx_status_skb_done(struct mt76_dev *dev, struct sk_buff *skb,
  			     struct sk_buff_head *list);
  void __mt76_tx_complete_skb(struct mt76_dev *dev, u16 wcid, struct sk_buff *skb,
@@ -136,7 +136,7 @@
  
 --- a/drivers/net/wireless/mediatek/mt76/tx.c
 +++ b/drivers/net/wireless/mediatek/mt76/tx.c
-@@ -195,7 +195,11 @@ mt76_tx_check_non_aql(struct mt76_dev *d
+@@ -197,7 +197,11 @@ mt76_tx_check_non_aql(struct mt76_dev *d
  }
  
  void __mt76_tx_complete_skb(struct mt76_dev *dev, u16 wcid_idx, struct sk_buff *skb,
