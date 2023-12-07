@@ -629,6 +629,8 @@ def _main():
     parser.add_argument('--reference', metavar='<path-to-git-obj-dir>', type=str,
                         default=None,
                         help='Override what argument to use to git clone --reference')
+    parser.add_argument('--no-git-update', const=True, default=False, action="store_const",
+                        help='Don\'t update git trees')
     args = parser.parse_args()
 
     bk_updater = backport_kernel_updater(yes=args.yes or args.force,
@@ -649,7 +651,8 @@ def _main():
     bk_updater.remove_stale_kernel_dirs()
     bk_updater.get_backport_pkgs()
     bk_updater.extract_backport_pkgs()
-    bk_updater.update_git_trees()
+    if not args.no_git_update:
+        bk_updater.update_git_trees()
 
     return 0
 
