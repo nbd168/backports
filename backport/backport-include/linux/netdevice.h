@@ -27,14 +27,6 @@ static inline bool backport_napi_complete(struct napi_struct *n)
 #define NETIF_F_CSUM_MASK NETIF_F_ALL_CSUM
 #endif
 
-#if LINUX_VERSION_IS_LESS(4,7,0)
-#define netif_trans_update LINUX_BACKPORT(netif_trans_update)
-static inline void netif_trans_update(struct net_device *dev)
-{
-	dev->trans_start = jiffies;
-}
-#endif
-
 #if LINUX_VERSION_IS_LESS(4,11,9)
 #define netdev_set_priv_destructor(_dev, _destructor) \
 	(_dev)->destructor = __ ## _destructor

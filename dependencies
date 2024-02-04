@@ -11,16 +11,8 @@ ATMEL 4.18
 QTNFMAC 5.1
 QTNFMAC_PCIE 5.1
 
-# struct ethtool_link_ksettings is missing, I'm lazy
-USB_USBNET 4.6
-USB_NET_RNDIS_WLAN 4.6
-
 # For Coexsitence the BT driver has to export rsi_bt_ops
 RSI_COEX 4.17
-
-# needs napi_consume_skb()
-MT7915E 4.6
-MT7921E 4.6
 
 # depends on crypto_sync_skcipher()
 AIRO 4.20
