@@ -7,28 +7,6 @@
 #include <linux/pci-aspm.h>
 #endif
 
-
-
-#if LINUX_VERSION_IS_LESS(4,8,0)
-#define pci_alloc_irq_vectors LINUX_BACKPORT(pci_alloc_irq_vectors)
-#ifdef CONFIG_PCI_MSI
-int pci_alloc_irq_vectors(struct pci_dev *dev, unsigned int min_vecs,
-		unsigned int max_vecs, unsigned int flags);
-#else
-static inline int pci_alloc_irq_vectors(struct pci_dev *dev, unsigned int min_vecs,
-		unsigned int max_vecs, unsigned int flags)
-{ return -ENOSYS; }
-#endif
-#endif
-
-#if LINUX_VERSION_IS_LESS(4,8,0)
-#define pci_free_irq_vectors LINUX_BACKPORT(pci_free_irq_vectors)
-static inline void pci_free_irq_vectors(struct pci_dev *dev)
-{
-}
-#endif
-
-
 #if LINUX_VERSION_IS_LESS(4,9,0) &&			\
 	!LINUX_VERSION_IN_RANGE(4,8,13, 4,9,0)
 
