@@ -91,10 +91,7 @@ struct backport_genl_ops {
 	void			*__dummy_was_policy_must_be_null;
 	int		       (*doit)(struct sk_buff *skb,
 				       struct genl_info *info);
-#if LINUX_VERSION_IS_GEQ(4,5,0) || \
-    LINUX_VERSION_IN_RANGE(4,4,104, 4,5,0)
 	int		       (*start)(struct netlink_callback *cb);
-#endif
 	int		       (*dumpit)(struct sk_buff *skb,
 					 struct netlink_callback *cb);
 	int		       (*done)(struct netlink_callback *cb);
@@ -111,10 +108,7 @@ __real_backport_genl_register_family(struct genl_family *family)
 	BUILD_BUG_ON(offsetof(struct genl_ops, f) != \
 		     offsetof(struct backport_genl_ops, f))
 	OPS_VALIDATE(doit);
-#if LINUX_VERSION_IS_GEQ(4,5,0) || \
-    LINUX_VERSION_IN_RANGE(4,4,104, 4,5,0)
 	OPS_VALIDATE(start);
-#endif
 	OPS_VALIDATE(dumpit);
 	OPS_VALIDATE(done);
 	OPS_VALIDATE(cmd);

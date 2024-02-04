@@ -30,7 +30,6 @@ static inline void pci_free_irq_vectors(struct pci_dev *dev)
 
 
 #if LINUX_VERSION_IS_LESS(4,9,0) &&			\
-	!LINUX_VERSION_IN_RANGE(4,4,37, 4,5,0) &&	\
 	!LINUX_VERSION_IN_RANGE(4,8,13, 4,9,0)
 
 static inline struct pci_dev *pcie_find_root_port(struct pci_dev *dev)
@@ -47,7 +46,7 @@ static inline struct pci_dev *pcie_find_root_port(struct pci_dev *dev)
 	return NULL;
 }
 
-#endif/* <4.9.0 but not >= 4.4.37, 4.8.13 */
+#endif/* <4.9.0 but not >= 4.8.13 */
 
 #ifndef PCI_IRQ_LEGACY
 #define PCI_IRQ_LEGACY		(1 << 0) /* Allow legacy interrupts */
