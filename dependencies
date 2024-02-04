@@ -11,12 +11,6 @@ ATMEL 4.18
 QTNFMAC 5.1
 QTNFMAC_PCIE 5.1
 
-# needs GPIO stuff we didn't backport
-SSB_DRIVER_GPIO 4.5
-
-# Uses gpiochip_get_data()
-BCMA_DRIVER_GPIO 4.5
-
 # struct ethtool_link_ksettings is missing, I'm lazy
 USB_USBNET 4.6
 USB_NET_RNDIS_WLAN 4.6

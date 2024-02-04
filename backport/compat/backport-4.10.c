@@ -15,7 +15,6 @@
 #include <linux/page_ref.h>
 #include <linux/gfp.h>
 
-#if LINUX_VERSION_IS_GEQ(4,6,0)
 #if LINUX_VERSION_IS_LESS(4,7,0)
 static bool ethtool_convert_link_mode_to_legacy_u32(u32 *legacy_u32,
 						    const unsigned long *src)
@@ -253,7 +252,6 @@ int mii_ethtool_get_link_ksettings(struct mii_if_info *mii,
 	return 0;
 }
 EXPORT_SYMBOL(mii_ethtool_get_link_ksettings);
-#endif /* LINUX_VERSION_IS_GEQ(4,6,0) */
 
 void __page_frag_cache_drain(struct page *page, unsigned int count)
 {
