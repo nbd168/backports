@@ -1,27 +1,5 @@
-additional include needed for kernel 4.2, 4.11, 4.12 and 4.13
-
 linux/kthread.h include needed against kernel 4.19.
 
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -6,6 +6,7 @@
-  */
- 
- #include <linux/firmware.h>
-+#include <linux/module.h>
- #include "mt7615.h"
- #include "mcu.h"
- #include "mac.h"
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-@@ -2,6 +2,7 @@
- /* Copyright (C) 2020 MediaTek Inc. */
- 
- #include "mt76_connac_mcu.h"
-+#include <linux/module.h>
- 
- int mt76_connac_mcu_start_firmware(struct mt76_dev *dev, u32 addr, u32 option)
- {
 --- a/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
 @@ -9,6 +9,7 @@

@@ -1,34 +1,12 @@
 linux/interrupt.h include needed for kernel 4.14
-linux/module.h include needed for kernel 3.18
 
 --- a/drivers/net/wireless/microchip/wilc1000/netdev.c
 +++ b/drivers/net/wireless/microchip/wilc1000/netdev.c
-@@ -9,6 +9,8 @@
+@@ -9,6 +9,7 @@
  #include <linux/firmware.h>
  #include <linux/netdevice.h>
  #include <linux/inetdevice.h>
 +#include <linux/interrupt.h>
-+#include <linux/module.h>
  
  #include "cfg80211.h"
  #include "wlan_cfg.h"
---- a/drivers/net/wireless/microchip/wilc1000/sdio.c
-+++ b/drivers/net/wireless/microchip/wilc1000/sdio.c
-@@ -10,6 +10,7 @@
- #include <linux/mmc/host.h>
- #include <linux/mmc/sdio.h>
- #include <linux/of_irq.h>
-+#include <linux/module.h>
- 
- #include "netdev.h"
- #include "cfg80211.h"
---- a/drivers/net/wireless/microchip/wilc1000/spi.c
-+++ b/drivers/net/wireless/microchip/wilc1000/spi.c
-@@ -8,6 +8,7 @@
- #include <linux/spi/spi.h>
- #include <linux/crc7.h>
- #include <linux/crc-itu-t.h>
-+#include <linux/module.h>
- 
- #include "netdev.h"
- #include "cfg80211.h"
