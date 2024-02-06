@@ -107,8 +107,7 @@ static inline void nf_reset_ct(struct sk_buff *skb)
 #if LINUX_VERSION_IS_LESS(5,6,0) &&			\
 	!LINUX_VERSION_IN_RANGE(5,4,69, 5,5,0) &&	\
 	!LINUX_VERSION_IN_RANGE(4,19,149, 4,20,0) &&	\
-	!LINUX_VERSION_IN_RANGE(4,14,200, 4,15,0) &&	\
-	!LINUX_VERSION_IN_RANGE(4,9,238, 4,10,0)
+	!LINUX_VERSION_IN_RANGE(4,14,200, 4,15,0)
 /**
  *	skb_queue_len_lockless	- get queue length
  *	@list_: list to measure

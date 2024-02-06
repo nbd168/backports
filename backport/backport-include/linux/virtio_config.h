@@ -12,11 +12,7 @@ struct irq_affinity;
 static inline
 int virtio_find_vqs(struct virtio_device *vdev, unsigned nvqs,
 			struct virtqueue *vqs[], vq_callback_t *callbacks[],
-#if LINUX_VERSION_IS_LESS(4,10,0)
-			const char * const names[],
-#else
 			const char *names[],
-#endif
 			struct irq_affinity *desc)
 {
 #if LINUX_VERSION_IS_LESS(4,11,0)

@@ -50,12 +50,6 @@ static inline void *genl_info_userhdr(struct genl_info *info)
 	return (u8 *)info->genlhdr + GENL_HDRLEN;
 }
 
-#if LINUX_VERSION_IS_LESS(4,10,0)
-#define __genl_ro_after_init
-#else
-#define __genl_ro_after_init __ro_after_init
-#endif
-
 #if LINUX_VERSION_IS_LESS(4,15,0)
 #define genlmsg_nlhdr LINUX_BACKPORT(genlmsg_nlhdr)
 static inline struct nlmsghdr *genlmsg_nlhdr(void *user_hdr)

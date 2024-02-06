@@ -5,28 +5,6 @@
 #include <backport/magic.h>
 
 
-#if LINUX_VERSION_IS_LESS(4,10,0)
-static inline bool backport_napi_complete_done(struct napi_struct *n, int work_done)
-{
-	if (unlikely(test_bit(NAPI_STATE_NPSVC, &n->state)))
-		return false;
-
-	napi_complete_done(n, work_done);
-	return true;
-}
-
-static inline bool backport_napi_complete(struct napi_struct *n)
-{
-	return backport_napi_complete_done(n, 0);
-}
-#define napi_complete_done LINUX_BACKPORT(napi_complete_done)
-#define napi_complete LINUX_BACKPORT(napi_complete)
-#endif /* < 4.10 */
-
-#ifndef NETIF_F_CSUM_MASK
-#define NETIF_F_CSUM_MASK NETIF_F_ALL_CSUM
-#endif
-
 #if LINUX_VERSION_IS_LESS(4,11,9)
 #define netdev_set_priv_destructor(_dev, _destructor) \
 	(_dev)->destructor = __ ## _destructor
