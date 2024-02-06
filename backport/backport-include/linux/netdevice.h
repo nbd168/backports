@@ -4,20 +4,6 @@
 #include <linux/version.h>
 #include <backport/magic.h>
 
-
-#if LINUX_VERSION_IS_LESS(4,11,9)
-#define netdev_set_priv_destructor(_dev, _destructor) \
-	(_dev)->destructor = __ ## _destructor
-#define netdev_set_def_destructor(_dev) \
-	(_dev)->destructor = free_netdev
-#else
-#define netdev_set_priv_destructor(_dev, _destructor) \
-	(_dev)->needs_free_netdev = true; \
-	(_dev)->priv_destructor = (_destructor);
-#define netdev_set_def_destructor(_dev) \
-	(_dev)->needs_free_netdev = true;
-#endif
-
 #if LINUX_VERSION_IS_LESS(4,15,0)
 static inline int _bp_netdev_upper_dev_link(struct net_device *dev,
 					    struct net_device *upper_dev)
