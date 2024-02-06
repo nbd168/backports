@@ -5,9 +5,7 @@
 #include <linux/version.h>
 
 #if LINUX_VERSION_IS_LESS(5,9,0)
-#if LINUX_VERSION_IS_GEQ(4,11,0)
 #include <uapi/linux/sched/types.h>
-#endif
 
 static inline void sched_set_fifo_low(struct task_struct *p)
 {

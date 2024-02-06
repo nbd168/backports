@@ -4,10 +4,6 @@
 
 #include <linux/version.h>
 
-#if LINUX_VERSION_IS_LESS(4,11,0)
-struct irq_affinity;
-#endif
-
 #if LINUX_VERSION_IS_LESS(4,12,0)
 static inline
 int virtio_find_vqs(struct virtio_device *vdev, unsigned nvqs,
@@ -15,11 +11,7 @@ int virtio_find_vqs(struct virtio_device *vdev, unsigned nvqs,
 			const char *names[],
 			struct irq_affinity *desc)
 {
-#if LINUX_VERSION_IS_LESS(4,11,0)
-	return vdev->config->find_vqs(vdev, nvqs, vqs, callbacks, names);
-#else
 	return vdev->config->find_vqs(vdev, nvqs, vqs, callbacks, names, desc);
-#endif
 }
 #endif /* < 4.12 */
 

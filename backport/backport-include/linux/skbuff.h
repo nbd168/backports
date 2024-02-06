@@ -72,14 +72,6 @@ static inline void skb_mark_not_on_list(struct sk_buff *skb)
 #endif /* 4.19.10 <= x < 4.20 */
 #endif
 
-#if LINUX_VERSION_IS_LESS(4,11,0)
-#define skb_mac_offset LINUX_BACKPORT(skb_mac_offset)
-static inline int skb_mac_offset(const struct sk_buff *skb)
-{
-	return skb_mac_header(skb) - skb->data;
-}
-#endif
-
 #if LINUX_VERSION_IS_LESS(5,4,0)
 /**
  * skb_frag_off() - Returns the offset of a skb fragment

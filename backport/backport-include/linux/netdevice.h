@@ -94,11 +94,6 @@ static inline void dev_sw_netstats_tx_add(struct net_device *dev,
 void dev_get_tstats64(struct net_device *dev, struct rtnl_link_stats64 *s);
 #endif /* < 5.11 */
 
-#if LINUX_VERSION_IS_LESS(4,11,0)
-struct rtnl_link_stats64 *
-bp_dev_get_tstats64(struct net_device *dev, struct rtnl_link_stats64 *s);
-#endif /* < 4.11 */
-
 #if LINUX_VERSION_IS_LESS(5,15,0)
 #define get_user_ifreq LINUX_BACKPORT(get_user_ifreq)
 int get_user_ifreq(struct ifreq *ifr, void __user **ifrdata, void __user *arg);
