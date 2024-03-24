@@ -1,6 +1,6 @@
 --- a/drivers/staging/r8188eu/os_dep/os_intfs.c
 +++ b/drivers/staging/r8188eu/os_dep/os_intfs.c
-@@ -636,7 +636,15 @@ static unsigned int rtw_classify8021d(st
+@@ -276,7 +276,15 @@ static unsigned int rtw_classify8021d(st
  	return dscp >> 5;
  }
  

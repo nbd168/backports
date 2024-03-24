@@ -16,7 +16,7 @@
  
  int mt76_queues_read(struct seq_file *s, void *data)
  {
-@@ -130,8 +132,10 @@ mt76_register_debugfs_fops(struct mt76_d
+@@ -132,8 +134,10 @@ mt76_register_debugfs_fops(struct mt76_p
  	debugfs_create_u8("led_pin", 0600, dir, &dev->led_pin);
  	debugfs_create_u32("regidx", 0600, dir, &dev->debugfs_reg);
  	debugfs_create_file_unsafe("regval", 0600, dir, dev, fops);
@@ -29,7 +29,7 @@
  		debugfs_create_blob("otp", 0400, dir, &dev->otp);
 --- a/drivers/net/wireless/mediatek/mt76/dma.c
 +++ b/drivers/net/wireless/mediatek/mt76/dma.c
-@@ -650,7 +650,9 @@ mt76_dma_init(struct mt76_dev *dev,
+@@ -755,7 +755,9 @@ mt76_dma_init(struct mt76_dev *dev,
  	init_dummy_netdev(&dev->tx_napi_dev);
  	snprintf(dev->napi_dev.name, sizeof(dev->napi_dev.name), "%s",
  		 wiphy_name(dev->hw->wiphy));
@@ -38,4 +38,4 @@
 +#endif
  
  	mt76_for_each_q_rx(dev, i) {
- 		netif_napi_add(&dev->napi_dev, &dev->napi[i], poll, 64);
+ 		netif_napi_add(&dev->napi_dev, &dev->napi[i], poll);

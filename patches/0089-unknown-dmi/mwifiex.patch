@@ -1,6 +1,6 @@
 --- a/drivers/net/wireless/marvell/mwifiex/pcie_quirks.c
 +++ b/drivers/net/wireless/marvell/mwifiex/pcie_quirks.c
-@@ -34,7 +34,9 @@ static const struct dmi_system_id mwifie
+@@ -20,7 +20,9 @@ static const struct dmi_system_id mwifie
  		.matches = {
  			/* match for SKU here due to generic product name "Surface Pro" */
  			DMI_EXACT_MATCH(DMI_SYS_VENDOR, "Microsoft Corporation"),
@@ -10,7 +10,7 @@
  		},
  		.driver_data = (void *)QUIRK_FW_RST_D3COLD,
  	},
-@@ -43,7 +45,9 @@ static const struct dmi_system_id mwifie
+@@ -29,7 +31,9 @@ static const struct dmi_system_id mwifie
  		.matches = {
  			/* match for SKU here due to generic product name "Surface Pro" */
  			DMI_EXACT_MATCH(DMI_SYS_VENDOR, "Microsoft Corporation"),

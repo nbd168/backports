@@ -1,6 +1,6 @@
 --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/dmi.c
 +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/dmi.c
-@@ -58,7 +58,9 @@ static const struct dmi_system_id dmi_pl
+@@ -65,7 +65,9 @@ static const struct dmi_system_id dmi_pl
  		.matches = {
  			DMI_EXACT_MATCH(DMI_BOARD_VENDOR, "To be filled by O.E.M."),
  			DMI_EXACT_MATCH(DMI_BOARD_NAME, "Cherry Trail CR"),
@@ -10,7 +10,7 @@
  			/* also match on somewhat unique bios-version */
  			DMI_EXACT_MATCH(DMI_BIOS_VERSION, "1.000"),
  		},
-@@ -69,7 +71,9 @@ static const struct dmi_system_id dmi_pl
+@@ -76,7 +78,9 @@ static const struct dmi_system_id dmi_pl
  		.matches = {
  			DMI_EXACT_MATCH(DMI_BOARD_VENDOR, "To be filled by O.E.M."),
  			DMI_EXACT_MATCH(DMI_BOARD_NAME, "Cherry Trail CR"),
@@ -20,7 +20,7 @@
  			/* also match on somewhat unique bios-version */
  			DMI_EXACT_MATCH(DMI_BIOS_VERSION, "1.000"),
  		},
-@@ -80,7 +84,9 @@ static const struct dmi_system_id dmi_pl
+@@ -107,7 +111,9 @@ static const struct dmi_system_id dmi_pl
  		.matches = {
  			DMI_EXACT_MATCH(DMI_BOARD_VENDOR, "Default string"),
  			DMI_EXACT_MATCH(DMI_BOARD_NAME, "Cherry Trail CR"),

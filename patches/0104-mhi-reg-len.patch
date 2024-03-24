@@ -1,6 +1,6 @@
 --- a/drivers/net/wireless/ath/ath11k/mhi.c
 +++ b/drivers/net/wireless/ath/ath11k/mhi.c
-@@ -330,7 +330,9 @@ int ath11k_mhi_register(struct ath11k_pc
+@@ -397,7 +397,9 @@ int ath11k_mhi_register(struct ath11k_pc
  	mhi_ctrl->cntrl_dev = ab->dev;
  	mhi_ctrl->fw_image = ab_pci->amss_path;
  	mhi_ctrl->regs = ab->mem;

@@ -1,8 +1,8 @@
 --- a/net/wireless/nl80211.c
 +++ b/net/wireless/nl80211.c
-@@ -15188,9 +15188,11 @@ static const struct genl_ops nl80211_ops
+@@ -16451,9 +16451,11 @@ static const struct genl_ops nl80211_ops
  		/* can be retrieved by unprivileged users */
- 		.internal_flags = NL80211_FLAG_NEED_WIPHY,
+ 		.internal_flags = IFLAGS(NL80211_FLAG_NEED_WIPHY),
  	},
 +#if LINUX_VERSION_IS_GEQ(5,10,0)
  };
@@ -12,7 +12,7 @@
  	{
  		.cmd = NL80211_CMD_SET_WIPHY,
  		.validate = GENL_DONT_VALIDATE_STRICT | GENL_DONT_VALIDATE_DUMP,
-@@ -15980,8 +15982,10 @@ static struct genl_family nl80211_fam __
+@@ -17290,8 +17292,10 @@ static struct genl_family nl80211_fam __
  	.module = THIS_MODULE,
  	.ops = nl80211_ops,
  	.n_ops = ARRAY_SIZE(nl80211_ops),
@@ -20,6 +20,6 @@
  	.small_ops = nl80211_small_ops,
  	.n_small_ops = ARRAY_SIZE(nl80211_small_ops),
 +#endif
+ 	.resv_start_op = NL80211_CMD_REMOVE_LINK_STA + 1,
  	.mcgrps = nl80211_mcgrps,
  	.n_mcgrps = ARRAY_SIZE(nl80211_mcgrps),
- 	.parallel_ops = true,
