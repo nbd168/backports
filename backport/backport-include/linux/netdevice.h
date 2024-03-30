@@ -240,4 +240,14 @@ static inline void backport_netif_napi_add_tx(struct net_device *dev,
 #define netif_napi_add_tx LINUX_BACKPORT(netif_napi_add_tx)
 #endif /* < 6.1 */
 
+#if LINUX_VERSION_IS_LESS(5,15,0)
+#define dev_addr_mod LINUX_BACKPORT(dev_addr_mod)
+static inline void
+dev_addr_mod(struct net_device *dev, unsigned int offset,
+	const void *addr, size_t len)
+{
+	memcpy(&dev->dev_addr[offset], addr, len);
+}
+#endif /* < 5.15 */
+
 #endif /* __BACKPORT_NETDEVICE_H */
