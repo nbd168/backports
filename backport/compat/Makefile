@@ -8,6 +8,7 @@ compat-y += main.o
 
 # Kernel backport compatibility code
 compat-$(CPTCFG_KERNEL_4_18) += backport-4.18.o
+compat-$(CPTCFG_KERNEL_4_19) += backport-4.19.o
 compat-$(CPTCFG_KERNEL_5_2) += backport-5.2.o backport-genetlink.o
 compat-$(CPTCFG_KERNEL_5_3) += backport-5.3.o
 compat-$(CPTCFG_KERNEL_5_5) += backport-5.5.o
