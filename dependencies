@@ -38,6 +38,9 @@ MT7921U 4.19
 # Needs aes_expandkey() and aes_encrypt()
 RTL8723BS 5.4
 
+# ida_alloc()
+MAC80211_HWSIM 4.19
+
 # ida_alloc(), xarray
 MHI_BUS 4.19
 
