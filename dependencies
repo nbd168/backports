@@ -37,3 +37,6 @@ QCOM_QMI_HELPERS 4.16
 
 # QRTR
 ATH11K 5.2
+
+# usb_control_msg_send
+R8188EU 5.10
