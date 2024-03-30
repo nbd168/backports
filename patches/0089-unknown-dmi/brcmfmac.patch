@@ -20,7 +20,17 @@
  			/* also match on somewhat unique bios-version */
  			DMI_EXACT_MATCH(DMI_BIOS_VERSION, "1.000"),
  		},
-@@ -107,7 +111,9 @@ static const struct dmi_system_id dmi_pl
+@@ -96,7 +100,9 @@ static const struct dmi_system_id dmi_pl
+ 		.matches = {
+ 			DMI_EXACT_MATCH(DMI_BOARD_VENDOR, "Hampoo"),
+ 			DMI_EXACT_MATCH(DMI_BOARD_NAME, "Cherry Trail CR"),
++#if LINUX_VERSION_IS_GEQ(4,18,0)
+ 			DMI_EXACT_MATCH(DMI_PRODUCT_SKU, "MRD"),
++#endif
+ 			/* Above strings are too generic, also match on BIOS date */
+ 			DMI_MATCH(DMI_BIOS_DATE, "05/10/2016"),
+ 		},
+@@ -107,7 +113,9 @@ static const struct dmi_system_id dmi_pl
  		.matches = {
  			DMI_EXACT_MATCH(DMI_BOARD_VENDOR, "Default string"),
  			DMI_EXACT_MATCH(DMI_BOARD_NAME, "Cherry Trail CR"),
