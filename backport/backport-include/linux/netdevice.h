@@ -211,6 +211,17 @@ static inline int LINUX_BACKPORT(netif_rx)(struct sk_buff *skb)
 #define netif_rx LINUX_BACKPORT(netif_rx)
 #endif /* < 5.18.0 */
 
+#if LINUX_VERSION_IS_LESS(5,19,0)
+#define netif_napi_add_weight LINUX_BACKPORT(netif_napi_add_weight)
+static inline void netif_napi_add_weight(struct net_device *dev,
+				   struct napi_struct *napi,
+				   int (*poll)(struct napi_struct *, int),
+				   int weight)
+{
+	netif_napi_add(dev, napi, poll, weight);
+}
+#endif /* < 5.19.0 */
+
 #if LINUX_VERSION_IS_LESS(6,1,0)
 static inline void backport_netif_napi_add(struct net_device *dev,
 					   struct napi_struct *napi,
