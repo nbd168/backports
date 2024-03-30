@@ -250,4 +250,12 @@ dev_addr_mod(struct net_device *dev, unsigned int offset,
 }
 #endif /* < 5.15 */
 
+#if LINUX_VERSION_IS_LESS(5,13,0)
+#define dev_set_threaded LINUX_BACKPORT(dev_set_threaded)
+static inline int dev_set_threaded(struct net_device *dev, bool threaded)
+{
+	return -EOPNOTSUPP;
+}
+#endif /* < 5.13 */
+
 #endif /* __BACKPORT_NETDEVICE_H */
