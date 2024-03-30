@@ -32,6 +32,8 @@ endif
 
 subdir-ccflags-y := $(call cc-option, -fno-pie) $(call cc-option, -no-pie)
 
+subdir-ccflags-y += -std=gnu11
+
 obj-y += compat/
 
 obj-$(CPTCFG_CFG80211) += net/wireless/
