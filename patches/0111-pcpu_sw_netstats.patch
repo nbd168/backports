@@ -1,0 +1,30 @@
+--- a/drivers/net/usb/usbnet.c
++++ b/drivers/net/usb/usbnet.c
+@@ -334,8 +334,13 @@ void usbnet_skb_return (struct usbnet *d
+ 		skb->protocol = eth_type_trans (skb, dev->net);
+ 
+ 	flags = u64_stats_update_begin_irqsave(&stats64->syncp);
++#if LINUX_VERSION_IS_GEQ(6,0,0)
+ 	u64_stats_inc(&stats64->rx_packets);
+ 	u64_stats_add(&stats64->rx_bytes, skb->len);
++#else
++	stats64->rx_packets++;
++	stats64->rx_bytes += skb->len;
++#endif
+ 	u64_stats_update_end_irqrestore(&stats64->syncp, flags);
+ 
+ 	netif_dbg(dev, rx_status, dev->net, "< rx, len %zu, type 0x%x\n",
+@@ -1253,8 +1258,13 @@ static void tx_complete (struct urb *urb
+ 		unsigned long flags;
+ 
+ 		flags = u64_stats_update_begin_irqsave(&stats64->syncp);
++#if LINUX_VERSION_IS_GEQ(6,0,0)
+ 		u64_stats_add(&stats64->tx_packets, entry->packets);
+ 		u64_stats_add(&stats64->tx_bytes, entry->length);
++#else
++		stats64->tx_packets += entry->packets;
++		stats64->tx_bytes += entry->length;
++#endif
+ 		u64_stats_update_end_irqrestore(&stats64->syncp, flags);
+ 	} else {
+ 		dev->net->stats.tx_errors++;
