@@ -21,6 +21,20 @@ AIRO_CS 4.20
 # mt7915 testmode uses skb_copy_header()
 NL80211_TESTMODE 4.18
 
+# skb list
+MT76x0E 4.19
+MT76x0U 4.19
+MT7663S 4.19
+MT7663U 4.19
+MT7615E 4.19
+MT7603E 4.19
+MT76x2E 4.19
+MT76x2U 4.19
+MT7915E 4.19
+MT7921E 4.19
+MT7921S 4.19
+MT7921U 4.19
+
 # Needs aes_expandkey() and aes_encrypt()
 RTL8723BS 5.4
 
