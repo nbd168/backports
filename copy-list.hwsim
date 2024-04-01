@@ -66,19 +66,6 @@ include/net/codel_qdisc.h
 include/net/fq.h
 include/net/fq_impl.h
 
-# signature verification code
-include/linux/asn1.h
-include/linux/asn1_ber_bytecode.h
-include/linux/oid_registry.h
-lib/build_OID_registry -> compat/build_OID_registry
-crypto/asymmetric_keys/pkcs7_parser.c -> compat/verification/pkcs7_parser.c
-crypto/asymmetric_keys/pkcs7_parser.h -> compat/verification/pkcs7_parser.h
-crypto/asymmetric_keys/pkcs7_trust.c -> compat/verification/pkcs7_trust.c
-crypto/asymmetric_keys/pkcs7_verify.c -> compat/verification/pkcs7_verify.c
-crypto/asymmetric_keys/x509_cert_parser.c -> compat/verification/x509_cert_parser.c
-crypto/asymmetric_keys/x509_parser.h -> compat/verification/x509_parser.h
-crypto/asymmetric_keys/x509_public_key.c -> compat/verification/x509_public_key.c
-
 net/Makefile
 net/Kconfig
 net/wireless/
