@@ -34,10 +34,7 @@ include/linux/ieee80211.h
 include/linux/pci_ids.h
 include/uapi/linux/pci_regs.h
 include/linux/mmc/sdio_ids.h
-include/linux/ath9k_platform.h
-include/linux/wl12xx.h
 include/linux/rndis.h
-include/linux/bcm47xx_wdt.h
 include/linux/usb/usbnet.h
 include/linux/usb/cdc.h
 include/uapi/linux/usb/cdc.h
@@ -45,9 +42,6 @@ include/uapi/linux/usb/cdc-wdm.h
 include/linux/usb/cdc_ncm.h
 include/linux/usb/cdc-wdm.h
 include/linux/usb/rndis_host.h
-include/linux/spi/libertas_spi.h
-include/linux/platform_data/brcmfmac.h
-include/linux/platform_data/net-cw1200.h
 include/uapi/linux/nl80211.h
 include/net/rsi_91x.h
 
