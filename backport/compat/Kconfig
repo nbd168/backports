@@ -79,13 +79,6 @@ config BPAUTO_USERSEL_BUILD_ALL
 config BPAUTO_WANT_DEV_COREDUMP
 	bool
 
-config BPAUTO_REFCOUNT
-	bool
-	default y
-	depends on KERNEL_4_11
-	#h-file linux/refcount.h
-	#c-file lib/refcount.c
-
 config BPAUTO_SYSTEM_DATA_VERIFICATION
 	bool
 
