@@ -79,7 +79,7 @@ class backport_kernel_updater:
         builds = re.findall(b'href="([-v.0-9a-z]*)/"', html)
         builds = [b.decode('ascii') for b in builds]
         # remove some special kernels
-        builds = [b for b in builds if re.match('v[3-9]', b)]
+        builds = [b for b in builds if re.match('v[4-9]', b)]
         builds = [b for b in builds if not '-rc' in b and not '-unstable' in b and not '-ckt' in b]
         last = {}
         for b in builds:
