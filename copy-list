@@ -72,11 +72,6 @@ net/Kconfig
 net/qrtr/
 net/wireless/
 net/mac80211/
-# MPLS labels, checked on skb->protocol on the
-# respective 802 family, only ethernet seems to use
-# this right now, see 960d97f95
-include/linux/mpls.h
-include/uapi/linux/mpls.h
 
 drivers/bus/mhi/
 include/linux/mhi.h
