@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 import argparse, os, sys, errno, getopt, re
 import shutil
+import zstandard
 from urllib.request import urlopen
 from urllib.parse import urljoin
 import tarfile, tempfile
 import fileinput, subprocess
-from pyzstd import ZstdFile
 source_dir = os.path.abspath(os.path.dirname(__file__))
 sys.path.append(source_dir + '/../')
 from lib import bpar as ar
@@ -543,13 +543,14 @@ class backport_kernel_updater:
                 data, dpath = tempfile.mkstemp(prefix=tmp_prefix)
                 ar.print_data(target, data)
                 try:
-                   tar = tarfile.open(name=dpath, mode='r')
-                   tar.extractall(path=tmpdir_path, members=bk_tar_members(tar))
+                   with tarfile.open(name=dpath, mode='r') as tar:
+                      tar.extractall(path=tmpdir_path, members=bk_tar_members(tar))
                 except (tarfile.ReadError):
-                   zstd_file = ZstdFile(dpath)
-                   tar = tarfile.open(fileobj=zstd_file, mode='r')
-                   tar.extractall(path=tmpdir_path, members=bk_tar_members(tar))
-                   zstd_file.close()
+                   with open(dpath, 'rb') as file:
+                      unzstd = zstandard.ZstdDecompressor()
+                      with unzstd.stream_reader(file) as stream:
+                         with tarfile.open(fileobj=stream, mode='r|') as tar:
+                            tar.extractall(path=tmpdir_path, members=bk_tar_members(tar))
                 os.unlink(dpath)
 
                 self.sanitize_and_install_kernel_dirs(tmpdir_path)
