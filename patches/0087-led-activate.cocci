@@ -1,6 +1,7 @@
 @act@
 identifier activate_fn, p;
-identifier m =~ "rx_led|tx_led|assoc_led|radio_led|tpt_led";
+/* the check for "rx_led|tx_led|assoc_led|radio_led|tpt_led" does not work with coccinelle in Ubuntu 24.04 */
+identifier m =~ ".*_led";
 fresh identifier activate_fn_wrap = "bp_" ## activate_fn;
 @@
 <+...
