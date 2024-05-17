@@ -116,7 +116,6 @@ drivers/net/wireless/marvell/
 drivers/net/wireless/microchip/
 drivers/net/wireless/intersil/Kconfig
 drivers/net/wireless/intersil/Makefile
-drivers/net/wireless/intersil/orinoco/
 drivers/net/wireless/intersil/p54/
 drivers/net/wireless/quantenna/
 drivers/net/wireless/realtek/
@@ -125,7 +124,6 @@ drivers/net/wireless/mediatek/
 drivers/net/wireless/admtek/
 drivers/net/wireless/virtual/
 drivers/net/wireless/rsi/
-drivers/net/wireless/legacy/
 # rndis also requires some of the USB networking
 drivers/net/usb/Makefile
 drivers/net/usb/Kconfig
