@@ -233,4 +233,8 @@ static inline int LINUX_BACKPORT(netif_rx)(struct sk_buff *skb)
 #define netif_rx LINUX_BACKPORT(netif_rx)
 #endif /* < 5.18.0 */
 
+#if LINUX_VERSION_IS_LESS(6,7,0)
+#define napi_schedule(napi) napi_reschedule(napi)
+#endif /* < 6.7.0 */
+
 #endif /* __BACKPORT_NETDEVICE_H */
