@@ -378,4 +378,11 @@ MIN_LEN_VALIDATION(42)
 #define NLA_POLICY_BINARY_RANGE(_min, _max) NLA_POLICY_RANGE(NLA_BINARY, _min, _max)
 #endif /* < 5.10 */
 
+#undef NLA_POLICY_FULL_RANGE
+#define NLA_POLICY_FULL_RANGE(tp, _range) {		\
+	.type = NLA_ENSURE_UINT_OR_BINARY_TYPE(tp),	\
+	.validation_type = NLA_VALIDATE_RANGE_PTR,	\
+	.range = (struct netlink_range_validation *)_range, \
+}
+
 #endif /* __BACKPORT_NET_NETLINK_H */
