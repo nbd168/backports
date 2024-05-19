@@ -258,4 +258,8 @@ static inline int dev_set_threaded(struct net_device *dev, bool threaded)
 }
 #endif /* < 5.13 */
 
+#if LINUX_VERSION_IS_LESS(6,7,0)
+#define napi_schedule(napi) napi_reschedule(napi)
+#endif /* < 6.7.0 */
+
 #endif /* __BACKPORT_NETDEVICE_H */
