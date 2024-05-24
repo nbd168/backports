@@ -325,18 +325,18 @@ def get_rel_spec_stable(rel):
     """
     if ("rc" in rel):
         m = re.match(r"(?P<VERSION>\d+)\.+" \
-                     "(?P<PATCHLEVEL>\d+)[.]*" \
-                     "(?P<SUBLEVEL>\d*)" \
-                     "[-rc]+(?P<RC_VERSION>\d+)\-+" \
-                     "(?P<RELMOD_UPDATE>\d+)[-]*" \
-                     "(?P<RELMOD_TYPE>[usnpc]*)", \
+                     r"(?P<PATCHLEVEL>\d+)[.]*" \
+                     r"(?P<SUBLEVEL>\d*)" \
+                     r"[-rc]+(?P<RC_VERSION>\d+)\-+" \
+                     r"(?P<RELMOD_UPDATE>\d+)[-]*" \
+                     r"(?P<RELMOD_TYPE>[usnpc]*)", \
                      rel)
     else:
         m = re.match(r"(?P<VERSION>\d+)\.+" \
-                     "(?P<PATCHLEVEL>\d+)[.]*" \
-                     "(?P<SUBLEVEL>\d*)\-+" \
-                     "(?P<RELMOD_UPDATE>\d+)[-]*" \
-                     "(?P<RELMOD_TYPE>[usnpc]*)", \
+                     r"(?P<PATCHLEVEL>\d+)[.]*" \
+                     r"(?P<SUBLEVEL>\d*)\-+" \
+                     r"(?P<RELMOD_UPDATE>\d+)[-]*" \
+                     r"(?P<RELMOD_TYPE>[usnpc]*)", \
                      rel)
     if (not m):
         return m
@@ -347,8 +347,8 @@ def get_rel_spec_next(rel):
     Returns release specs for a linux-next backports based release.
     """
     m = re.match(r"(?P<DATE_VERSION>\d+)[-]*" \
-                 "(?P<RELMOD_UPDATE>\d*)[-]*" \
-                 "(?P<RELMOD_TYPE>[usnpc]*)", \
+                 r"(?P<RELMOD_UPDATE>\d*)[-]*" \
+                 r"(?P<RELMOD_TYPE>[usnpc]*)", \
                  rel)
     if (not m):
         return m
@@ -1099,7 +1099,7 @@ def process(kerneldir, copy_list_file, git_revision=None,
     # groups -- 50 seemed safer and is still fast)
     regexes = []
     for some_symbols in [disable_makefile[i:i + 50] for i in range(0, len(disable_makefile), 50)]:
-        r = '^(([^#].*((' + bpid.full_prefix_resafe + '|CONFIG_)(' + '|'.join([s for s in some_symbols]) + ')))\W)'
+        r = '^(([^#].*((' + bpid.full_prefix_resafe + '|CONFIG_)(' + '|'.join([s for s in some_symbols]) + r')))\W)'
         regexes.append(re.compile(r, re.MULTILINE))
     for f in maketree.get_makefiles():
         data = open(f, 'r').read()
