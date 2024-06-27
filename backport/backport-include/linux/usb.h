@@ -11,6 +11,9 @@
 #define usb_check_bulk_endpoints LINUX_BACKPORT(usb_check_bulk_endpoints)
 bool usb_check_bulk_endpoints(
 		const struct usb_interface *intf, const u8 *ep_addrs);
+#define usb_check_int_endpoints LINUX_BACKPORT(usb_check_int_endpoints)
+bool usb_check_int_endpoints(
+		const struct usb_interface *intf, const u8 *ep_addrs);
 #endif /* < 5.15 */
 
 #if LINUX_VERSION_IS_LESS(5,19,0)
