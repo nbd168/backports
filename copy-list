@@ -90,6 +90,7 @@ drivers/net/wireless/intersil/orinoco/
 drivers/net/wireless/intersil/p54/
 drivers/net/wireless/quantenna/
 drivers/net/wireless/realtek/
+drivers/net/wireless/silabs/
 drivers/net/wireless/ti/
 drivers/net/wireless/mediatek/
 drivers/net/wireless/admtek/

@@ -57,3 +57,6 @@ ATH11K 5.2
 
 # usb_control_msg_send
 R8188EU 5.10
+
+# gpiod_set_consumer_name
+WFX 4.19
