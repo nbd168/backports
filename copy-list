@@ -88,6 +88,7 @@ drivers/net/wireless/intersil/Kconfig
 drivers/net/wireless/intersil/Makefile
 drivers/net/wireless/intersil/orinoco/
 drivers/net/wireless/intersil/p54/
+drivers/net/wireless/purelifi/
 drivers/net/wireless/quantenna/
 drivers/net/wireless/realtek/
 drivers/net/wireless/silabs/
