@@ -99,6 +99,7 @@ drivers/net/wireless/mac80211_hwsim.c
 drivers/net/wireless/mac80211_hwsim.h
 drivers/net/wireless/rsi/
 drivers/net/wireless/rndis_wlan.c
+drivers/net/wireless/virt_wifi.c
 # rndis also requires some of the USB networking
 drivers/net/usb/Makefile
 drivers/net/usb/Kconfig
