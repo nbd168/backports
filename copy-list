@@ -71,10 +71,6 @@ drivers/bus/mhi/
 include/linux/mhi.h
 
 drivers/net/wireless/ath/
-drivers/ssb/
-include/linux/ssb/
-drivers/bcma/
-include/linux/bcma/
 drivers/soc/qcom/Makefile
 drivers/soc/qcom/Kconfig
 drivers/soc/qcom/qmi_encdec.c
