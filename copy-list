@@ -86,7 +86,6 @@ drivers/net/wireless/marvell/
 drivers/net/wireless/microchip/
 drivers/net/wireless/intersil/Kconfig
 drivers/net/wireless/intersil/Makefile
-drivers/net/wireless/intersil/orinoco/
 drivers/net/wireless/intersil/p54/
 drivers/net/wireless/purelifi/
 drivers/net/wireless/quantenna/
@@ -95,11 +94,8 @@ drivers/net/wireless/silabs/
 drivers/net/wireless/ti/
 drivers/net/wireless/mediatek/
 drivers/net/wireless/admtek/
-drivers/net/wireless/mac80211_hwsim.c
-drivers/net/wireless/mac80211_hwsim.h
 drivers/net/wireless/rsi/
-drivers/net/wireless/rndis_wlan.c
-drivers/net/wireless/virt_wifi.c
+drivers/net/wireless/virtual/
 # rndis also requires some of the USB networking
 drivers/net/usb/Makefile
 drivers/net/usb/Kconfig
@@ -109,7 +105,6 @@ drivers/net/usb/usbnet.c
 
 drivers/staging/Makefile
 drivers/staging/Kconfig
-drivers/staging/r8188eu/
 drivers/staging/rtl8723bs/
 
 drivers/usb/class/Makefile
