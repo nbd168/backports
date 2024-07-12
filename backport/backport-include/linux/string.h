@@ -22,4 +22,14 @@
 })
 #endif
 
+#if LINUX_VERSION_IS_LESS(6,3,0)
+#define kvmemdup(src, len, gfp) \
+	({								\
+		void *__p = kvmalloc(len, gfp);				\
+		if (__p)						\
+			memcpy(__p, src, len);				\
+		__p;							\
+	})
+#endif
+
 #endif /* __BACKPORT_LINUX_STRING_H */
