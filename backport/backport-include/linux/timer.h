@@ -79,4 +79,11 @@ static inline int timer_delete_sync(struct timer_list *timer)
 }
 #endif /* < 6.1.84 */
 
+#if LINUX_VERSION_IS_LESS(6,2,0)
+static inline int timer_shutdown_sync(struct timer_list *timer)
+{
+	return del_timer_sync(timer);
+}
+#endif /* < 6.2 */
+
 #endif /* _BACKPORT_TIMER_H */
