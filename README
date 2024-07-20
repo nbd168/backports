@@ -4,7 +4,6 @@ This package provides backport support for drivers from newer kernels
 down to older kernels. It currently backports the following subsystems:
 
   * Wireless
-  * NFC
   * WWAN
 
 This package provides the latest Linux kernel subsystem enhancements
