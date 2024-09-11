@@ -16,7 +16,19 @@
  };
  
  static const struct nla_policy
-@@ -536,7 +541,11 @@ static const struct nla_policy nl80211_p
+@@ -463,9 +468,11 @@ nl80211_sta_wme_policy[NL80211_STA_WME_M
+ 	[NL80211_STA_WME_MAX_SP] = { .type = NLA_U8 },
+ };
+ 
++#if LINUX_VERSION_IS_GEQ(5,10,0)
+ static struct netlink_range_validation q_range = {
+ 	.max = INT_MAX,
+ };
++#endif
+ 
+ static const struct nla_policy nl80211_policy[NUM_NL80211_ATTR] = {
+ 	[0] = { .strict_start_type = NL80211_ATTR_HE_OBSS_PD },
+@@ -540,7 +547,11 @@ static const struct nla_policy nl80211_p
  	[NL80211_ATTR_MPATH_NEXT_HOP] = NLA_POLICY_ETH_ADDR_COMPAT,
  
  	/* allow 3 for NUL-termination, we used to declare this NLA_STRING */
@@ -28,7 +40,7 @@
  	[NL80211_ATTR_REG_RULES] = { .type = NLA_NESTED },
  
  	[NL80211_ATTR_BSS_CTS_PROT] = { .type = NLA_U8 },
-@@ -682,16 +691,26 @@ static const struct nla_policy nl80211_p
+@@ -686,16 +697,26 @@ static const struct nla_policy nl80211_p
  	 * The value of the Length field of the Supported Operating
  	 * Classes element is between 2 and 253.
  	 */
@@ -55,3 +67,15 @@
  	[NL80211_ATTR_MAC_HINT] = NLA_POLICY_EXACT_LEN_WARN(ETH_ALEN),
  	[NL80211_ATTR_WIPHY_FREQ_HINT] = { .type = NLA_U32 },
  	[NL80211_ATTR_TDLS_PEER_CAPABILITY] = { .type = NLA_U32 },
+@@ -749,7 +770,11 @@ static const struct nla_policy nl80211_p
+ 
+ 	[NL80211_ATTR_TXQ_LIMIT] = { .type = NLA_U32 },
+ 	[NL80211_ATTR_TXQ_MEMORY_LIMIT] = { .type = NLA_U32 },
++#if LINUX_VERSION_IS_GEQ(5,10,0)
+ 	[NL80211_ATTR_TXQ_QUANTUM] = NLA_POLICY_FULL_RANGE(NLA_U32, &q_range),
++#else
++	[NL80211_ATTR_TXQ_QUANTUM] = { .type = NLA_U32 },
++#endif
+ 	[NL80211_ATTR_HE_CAPABILITY] =
+ 		NLA_POLICY_VALIDATE_FN(NLA_BINARY, validate_he_capa,
+ 				       NL80211_HE_MAX_CAPABILITY_LEN),
