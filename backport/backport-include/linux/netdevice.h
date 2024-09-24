@@ -262,4 +262,16 @@ static inline int dev_set_threaded(struct net_device *dev, bool threaded)
 #define napi_schedule(napi) napi_reschedule(napi)
 #endif /* < 6.7.0 */
 
+#if LINUX_VERSION_IS_LESS(6,11,0)
+static inline void backport_free_netdev(struct net_device *dev)
+{
+	if (dev->reg_state == NETREG_DUMMY)
+		dev->reg_state = NETREG_UNINITIALIZED;
+	free_netdev(dev);
+}
+#define free_netdev LINUX_BACKPORT(free_netdev)
+#define alloc_netdev_dummy LINUX_BACKPORT(alloc_netdev_dummy)
+struct net_device *alloc_netdev_dummy(int sizeof_priv);
+#endif /* < 6.11.0 */
+
 #endif /* __BACKPORT_NETDEVICE_H */
