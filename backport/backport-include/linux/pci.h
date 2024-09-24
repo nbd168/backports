@@ -32,4 +32,8 @@ backport_pci_disable_link_state(struct pci_dev *pdev, int state)
 #endif /* < 5.3 */
 #endif /* defined(CONFIG_PCI) */
 
+#ifndef PCI_IRQ_INTX
+#define PCI_IRQ_INTX PCI_IRQ_LEGACY
+#endif
+
 #endif /* _BACKPORT_LINUX_PCI_H */
