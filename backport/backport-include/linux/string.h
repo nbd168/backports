@@ -48,6 +48,12 @@
 #define strscpy_pad(dst, src, ...)	\
 	CONCATENATE(__strscpy_pad, COUNT_ARGS(__VA_ARGS__))(dst, src, __VA_ARGS__)
 
+static inline void *
+kmemdup_array(const void *src, size_t count, size_t element_size, gfp_t gfp)
+{
+	return kmemdup(src, size_mul(element_size, count), gfp);
+}
+
 #endif /* <6.9 */
 
 #endif /* __BACKPORT_LINUX_STRING_H */
