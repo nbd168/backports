@@ -4,8 +4,8 @@
  * Copyright (C) 2023 Advanced Micro Devices
  */
 
-#ifndef _ACPI_AMD_WBRF_H
-#define _ACPI_AMD_WBRF_H
+#ifndef __BACKPORT_ACPI_AMD_WBRF_H
+#define __BACKPORT_ACPI_AMD_WBRF_H
 
 #if LINUX_VERSION_IS_GEQ(6,8,0)
 #include_next <linux/acpi_amd_wbrf.h>
@@ -83,4 +83,4 @@ int amd_wbrf_unregister_notifier(struct notifier_block *nb)
 }
 
 #endif /* >=6,8,0 */
-#endif /* _ACPI_AMD_WBRF_H */
+#endif /* __BACKPORT_ACPI_AMD_WBRF_H */
